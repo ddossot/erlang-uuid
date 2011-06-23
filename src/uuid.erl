@@ -17,7 +17,7 @@
 
 -export([start/0, start/1, start_link/0, start_link/1, stop/0]).
 -export([init/1, handle_call/3, handle_cast/2, handle_info/2, terminate/2, code_change/3]).
--export([v4/0, random/0, srandom/0, sha/2, md5/2, timestamp/0, timestamp/2, to_string/1]).
+-export([v4/0, random_string/0, random/0, srandom/0, sha/2, md5/2, timestamp/0, timestamp/2, to_string/1]).
 
 -define(SERVER, ?MODULE).
 -define(UUID_DNS_NAMESPACE, <<107,167,184,16,157,173,17,209,128,180,0,192,79,212,48,200>>).
@@ -36,6 +36,11 @@
 v4() ->
     random().
 
+%% @spec random_string -> string()
+%%
+random_string() ->
+    to_string(random()).    
+    
 %% @spec random() -> uuid()
 %% @doc
 %% Generates a random UUID
